@@ -72,3 +72,23 @@ bool excluirElemlista (TIPOCHAVE ch, LISTA *l) {
     l->numeroElemntos--;
     return true;
 }
+
+int buscaSequencial(LISTA *l, TIPOCHAVE ch) {
+    int i = 0;
+    while (i < l->numeroElemntos)
+    {
+        if (ch == l->A[i].chave) {
+            return i;
+        }
+        else i++;
+    }
+    return -1;
+}
+
+int buscaSentinela(LISTA *l, TIPOCHAVE ch) {
+    int i = 0;
+    l->A[l->numeroElemntos].chave = ch;
+    while (l->A[i].chave != ch) i++;
+    if (i == l->numeroElemntos) return -1;
+    else return i;
+}
