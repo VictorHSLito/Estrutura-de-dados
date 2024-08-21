@@ -92,3 +92,35 @@ int buscaSentinela(LISTA *l, TIPOCHAVE ch) {
     if (i == l->numeroElemntos) return -1;
     else return i;
 }
+
+/*Inserção de Elemento - Ordenada*/
+
+bool inserirElemListaOrd(LISTA *l, REGISTRO reg) {
+    if (l->numeroElemntos >= MAX) return false;
+    int pos = l->numeroElemntos;
+    while (pos > 0 && l->A[pos-1].chave > reg.chave) 
+    {
+        l->A[pos] = l->A[pos-1];
+        pos--;
+    }
+    l->A[pos] = reg;
+    l->numeroElemntos++;
+}
+
+/*Busca Binária*/
+
+int buscaBinaria(LISTA *l, TIPOCHAVE ch) {
+    int esq, dir, meio;
+    esq = 0;
+    dir = l->numeroElemntos-1;
+    while (esq <= dir)
+    {
+        meio = ((esq + dir))/2;
+        if (l->A[meio].chave == ch) return meio;
+        else {
+            if (l->A[meio].chave < ch) esq = meio + 1;
+            else dir = meio - 1;
+        }
+    }
+    return -1;
+}
