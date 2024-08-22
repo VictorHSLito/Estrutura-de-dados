@@ -32,3 +32,28 @@ void iniciaLista(LISTA *l) {
     l->inicio = INVALIDO;
     l->dispo = 0;
 }
+
+int tamanho(LISTA *l) {
+    int i = l->inicio;
+    int tam = 0;
+    while (i != INVALIDO)
+    {
+       tam++;
+       i = l->A[i].prox;
+    }
+
+    return tam;
+    
+}
+
+void exibirlista(LISTA *l) {
+    int i = l->inicio;
+    printf("Lista: \" ");
+
+    while (i != INVALIDO) 
+    {
+        printf("%i ", l->A[i].reg.chave);
+        i = l->A[i].prox;
+    }
+    printf("\"\n");
+}
