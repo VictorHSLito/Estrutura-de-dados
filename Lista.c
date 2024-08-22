@@ -34,15 +34,6 @@ void exibirlista (LISTA l) {
     printf("\"\n");
 }
 
-int buscaSequencial (LISTA *l, TIPOCHAVE ch) {
-    int i = 0;
-    while (i < l->numeroElemntos) {
-        if (ch == l->A[i].chave) return i;
-        else i++;
-    }
-    return -1;
-}
-
 bool inserirElemlista (LISTA *l, REGISTRO reg, int i) {
     int j;
     if ((l->numeroElemntos == MAX) || (i < 0) || (i > l->numeroElemntos)) {
