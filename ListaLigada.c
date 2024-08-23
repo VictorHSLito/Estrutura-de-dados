@@ -105,3 +105,28 @@ bool inserirElemListaOrd(LISTA *l, REGISTRO reg) {
 
     return true;
 }
+
+/*Exclusão de Elemento*/
+
+void devolver(LISTA *l, int j) {
+    l->A[j].prox = l->dispo;
+    l->dispo = j;
+}
+
+bool excluirElemLista(LISTA *l, TIPOCHAVE ch) {
+    int anterior = INVALIDO;
+    int i = l->inicio;
+
+    while ((i != INVALIDO) && l->A[i].reg.chave < ch)
+    {
+        anterior = i;
+        i = l->A[i].prox;
+    }
+    
+    if (i != INVALIDO || l->A[i].reg.chave != ch) return false;
+    if (anterior == INVALIDO) l->inicio = l->A[i].prox;
+    else l->A[anterior].prox = l->A[i].prox;
+
+    devolver(l, i);
+    return true;
+}
