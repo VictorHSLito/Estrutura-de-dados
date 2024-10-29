@@ -65,6 +65,7 @@ int peek(Fila* f) {
 }
 
 int main () {
+    int i = 0;
     Fila f;
     initializeQueue(&f);
 
@@ -74,8 +75,11 @@ int main () {
     enqueue(&f, 4);
     enqueue(&f, 5);
 
-    printf("Elemento removido: %d\n", dequeue(&f));
-    printf("Elemento na frente da fila: %d\n", peek(&f));
+    for (i = 0; i < MAX; i++) {
+        printf("Elemento %d na fila: %d\n", i+1, peek(&f));
+        dequeue(&f);
+    }
 
+    printf("Elemento %d na fila: %d", i, peek(&f));
     return 0;
 }
